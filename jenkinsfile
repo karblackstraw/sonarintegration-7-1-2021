@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage("Code Checkout from GitLab") {
+        stage("Code Checkout from Gihub") {
             steps {
                 git branch: 'master',
                 credentialsId: 'Github-Access',
@@ -11,7 +11,7 @@ pipeline {
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
-                    def scannerHome = tool 'SonarQubeScanner4.6.2';
+                    scannerHome = tool 'SonarQubeScanner4.6.2';
                     withSonarQubeEnv("SonarQube-Server") {
                     sh "${tool("scannerHome")}/bin/sonar-scanner \
                     -Dsonar.projectKey=jenkins-pipeline101 \
