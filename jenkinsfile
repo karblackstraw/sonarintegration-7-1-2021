@@ -13,7 +13,7 @@ pipeline {
                 script {
                     scannerHome = tool 'SonarQube Scanner 4.6.2';
                     withSonarQubeEnv("SonarQube-Server") {
-                    sh ""${("scannerHome")}/bin/sonar-scanner -D sonar.projectKey=jenkins-pipeline101 -D sonar.sources=. -D sonar.host.url=http://3.228.219.245:9000 -D sonar.login=SonarQube-Server-2"""
+                    sh "${(scannerHome)}/bin/sonar-scanner -D sonar.projectKey=jenkins-pipeline101 -D sonar.sources=. -D sonar.host.url=http://3.228.219.245:9000 -D sonar.login=SonarQube-Server-2"
                     }
                 }
             }
