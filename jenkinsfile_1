@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     environment {
-                    scannerHome = tool 'SonarQube Scanner 4.6.2';
+                    scannerHome = tool 'SonarQube Scanner 4.6.2'
                     credentialsId = credentials("SonarQube-Server-2")
             //      ProjectName = 'RTM_Store_Execution';
 				    projectKey = 'jenkins-pipeline101'
