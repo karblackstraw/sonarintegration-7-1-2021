@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    stages {
+        stage("Code Checkout from Gihub") {
+            steps {
+                git branch: 'master',
+                credentialsId: 'Github-Access',
+                url: 'https://github.com/karblackstraw/sonarintegration-7-1-2021.git'
+            }
+        }
+        stage('Code Quality Check via SonarQube') {
+            steps {
+                script {
+                    environment {
+                    scannerHome = tool 'SonarQube Scanner 4.6.2';
+                    credentialsId = credentials("SonarQube-Server-2")
+            //      ProjectName = 'RTM_Store_Execution';
+				    projectKey = 'jenkins-pipeline101'
+                    host.url = 'http://100.26.1.84:9000/'
+                   } 
+            //      scannerHome = tool 'SonarQube Scanner 4.6.2';
+                    withSonarQubeEnv("SonarQube-Server") {
+                    sh "${(scannerHome)}/bin/sonar-scanner -D sonar.projectKey=${projectKey} -D sonar.credentialsId=${credentialsId} -D sonar.host.url=${host.url} -D sonar.sources=. -D "
+                    }
+                }
+            }
+        }
+    }
+}
+        
