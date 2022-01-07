@@ -16,7 +16,7 @@ pipeline {
                     credentialsId = credentials("SonarQube-Server-2")
             //      ProjectName = 'RTM_Store_Execution';
 				    projectKey = 'jenkins-pipeline101'
-                    host.url = 'http://100.26.1.84:9000/'
+                    host.url = 'http://100.26.1.84:9000'
                    } 
             //      scannerHome = tool 'SonarQube Scanner 4.6.2';
                     withSonarQubeEnv("SonarQube-Server") {
